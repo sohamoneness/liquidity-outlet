@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Edit Outlet</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">Update Account Info</h2>
+  <div class="product_list_with_form">
+    <form [formGroup]="updateAccount" #account="ngForm" (ngSubmit)="updateProfile()">
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input type="text" placeholder="Enter Your Name" formControlName="name"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+        <span class="danger" *ngIf="f['name'].errors['required']">Please enter shop Name</span>
+        <span class="danger" *ngIf="f['name'].errors['cannotContainSpace']">Please enter shop Name</span>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Email Id</ion-label>
+        <ion-input type="text" placeholder="Enter Your Email Id" formControlName="email"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <span *ngIf="f['email'].errors['required']" class="danger">Please enter email-id</span> 
+        <span *ngIf="f['email'].errors['pattern']" class="danger">Please enter valid email-id</span> 
+      </div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Phone No</ion-label>
+        <ion-input type="tel" placeholder="Enter Your Phone No" formControlName="phone"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+        <span *ngIf="f['phone'].errors['required']" class="danger">Please enter phone number</span> 
+        <span *ngIf="f['phone'].errors['pattern']" class="danger">Please enter phone number</span> 
+      </div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Address</ion-label>
+        <ion-textarea placeholder="Enter Your Address" formControlName="address"></ion-textarea>
+      </ion-item>
+      <div *ngIf="submitted && f['address'].errors" class="invalid-feedback">
+        <span class="danger" *ngIf="f['address'].errors['required']">Please enter shop address</span>
+        <span class="danger" *ngIf="f['address'].errors['cannotContainSpace']">Please enter valid shop address</span>
+      </div>
+
+      <ion-item lines="none">
+        <div class="upload_box_btn" (click) = "uploadImage('SHOP')">
+          <ion-img src="../../assets/gallery.png"></ion-img>
+          <span>Upload Shop Image</span>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Shop Image</ion-label>
+        <ion-img src="image"></ion-img>
+      </ion-item>
+      <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+				<span class="danger" *ngIf="f['image'].errors['required']">Please upload shop image.</span>
+			</div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Offer Rate</ion-label>
+        <ion-input type="number" placeholder="Enter Offer Rate" formControlName="offer_rate"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['offer_rate'].errors" class="invalid-feedback">
+				<span class="danger" *ngIf="f['offer_rate'].errors['required']">Please enter offer_rate.</span>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Offer Text</ion-label>
+        <ion-input type="text" placeholder="Enter Offer Text" formControlName="offer_text"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['offer_text'].errors" class="invalid-feedback">
+				<span class="danger" *ngIf="f['offer_text'].errors['required']">Please enter offer text.</span>
+				<span class="danger" *ngIf="f['offer_text'].errors['cannotContainSpace']">Please enter valid offer text.</span>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">House Rules</ion-label>
+        <ion-textarea placeholder="Enter Your Address" formControlName="house_rules"></ion-textarea>
+      </ion-item>
+      <div *ngIf="submitted && f['house_rules'].errors" class="invalid-feedback">
+				<span class="danger" *ngIf="f['house_rules'].errors['required']">Please enter house rules.</span>
+        <span class="danger" *ngIf="f['house_rules'].errors['cannotContainSpace']">Please enter valid house rules.</span>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">GST No.</ion-label>
+        <ion-input type="text" placeholder="Enter GST No" formControlName="gst_no"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['gst_no'].errors" class="invalid-feedback">
+				<span class="danger" *ngIf="f['gst_no'].errors['required']">Please enter gst no.</span>
+        <span class="danger" *ngIf="f['gst_no'].errors['pattern']">Please enter valid gst no.</span>
+      </div>
+
+      <ion-item lines="none">
+        <div class="upload_box_btn" (click) = "uploadImage('GST')">
+          <ion-img src="../../assets/gallery.png"></ion-img>
+          <span>Upload GST Image</span>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">GST Image</ion-label>
+        <ion-img src="../../assets/1653472435_Sample-GST-Registration-Certificate.jpg"></ion-img>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">PAN No.</ion-label>
+        <ion-input type="text" placeholder="Enter PAN No" formControlName="pan_no"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['pan_no'].errors" class="invalid-feedback">
+        <span class="danger" *ngIf="f['pan_no'].errors['required']">PAN No. is required.</span>
+        <span class="danger" *ngIf="f['pan_no'].errors['pattern']">Please enter a valid PAN No.</span>
+      </div>
+ 
+      <ion-item lines="none">
+        <div class="upload_box_btn" (click) = "uploadImage('PAN')">
+          <ion-img src="../../assets/gallery.png"></ion-img>
+          <span>Upload PAN Image</span>
+        </div>
+        <ion-input type="file"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">PAN Image</ion-label>
+        <ion-img src="../../assets/1653472435_A_sample_of_Permanent_Account_Number_(PAN)_Card.jpg"></ion-img>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Aadhar No.</ion-label>
+        <ion-input type="text" placeholder="Enter Aadhar No" formControlName="aadhar_no"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['aadhar_no'].errors" class="invalid-feedback">
+				<span class="danger" *ngIf="f['aadhar_no'].errors['required']">Please enter aadhar number.</span>
+        <span class="danger" *ngIf="f['aadhar_no'].errors['pattern']">Please enter valid aadhar number</span>
+      </div>
+
+      <ion-item lines="none">
+        <div class="upload_box_btn" (click) = "uploadImage('AADHAR')">
+          <ion-img src="../../assets/gallery.png"></ion-img>
+          <span>Upload Aadhar Image</span>
+        </div>
+        <ion-input type="file"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Aadhar Image</ion-label>
+        <ion-img [src]="baseimageUrl+aadhar_image"></ion-img>
+      </ion-item>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="account.ngSubmit.emit()">Update</ion-button>
+      <ion-button class="danger" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

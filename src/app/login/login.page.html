@@ -1,0 +1,30 @@
+
+<ion-content padding>
+	<div class="flex_wrapper">
+	  <div class="logo_wrap">
+		<img src="../../assets/logo.png">
+	  </div>
+	  <div class="form_wrap">
+		<form [formGroup]="loginForm">
+			<ion-input placeholder="Your email" formControlName="email" type="email" [ngClass]="{ 'is-invalid':submitted && f['email'].errors}" ></ion-input>
+			<div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+				<span *ngIf="f['email'].errors['required']">Email is required.</span>
+				<span *ngIf="f['email'].errors['pattern']">Please enter valid email.</span>
+			</div>
+			
+			<ion-input placeholder="Enter Your Password" [type]="passwordType" formControlName="password" [ngClass]="{ 'is-invalid' : submitted && f['password'].errors}"></ion-input>
+			<ion-button slot="end" fill="clear" (click)="showPassword()" class="seeClient">
+				<ion-icon *ngIf="showPsw==true" name="eye-outline" color="black" class="iconEye"></ion-icon>
+				<ion-icon *ngIf="showPsw==false" name="eye-off-outline" color="black" class="iconEye"></ion-icon>
+			</ion-button>
+			<div *ngIf="submitted && f['password'].errors" class="invalid-feedback">  
+				<span *ngIf="f['password'].errors['required']">Please enter your password.</span>  
+				<span  *ngIf="f['password'].errors['minlength']">Minimum password length is 6.</span>  
+			</div>
+
+			<ion-button class="btn-submit" expand="block" shape="round" routerDirection="forward" (click)="submitLogin()">Log in as admin</ion-button>
+		</form>
+		<p>Forgot your password?</p>
+	  </div>
+	</div>
+  </ion-content>

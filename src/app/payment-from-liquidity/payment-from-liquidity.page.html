@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Payment to Outlet List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">Transaction List</h2>
+  <div class="toggle_group">
+    <div class="toggle_item" *ngFor="let payment of allPayments; let i=index">
+      <div class="accordion_head">
+        <ion-label>
+          <h4><b>{{i+1}}.</b> {{userDetails.name}} <span>{{payment.created_at|date:'dd-MMM-yyyy'}} {{payment.created_at|date:'hh:mm a'}}</span></h4> 
+          <p>$ {{payment?.amount}}</p>
+        </ion-label>
+      </div>
+      <div class="accordion_content" slot="content">
+        <div class="menu_content">
+          <ul>
+            <li *ngIf="payment.payment_type==3"><span>Payment Type :</span>NEFT</li>
+            <li *ngIf="payment.bank_name"><span>Bank Name :</span>{{payment.bank_name}}</li>
+            <li><span>Payment Details :</span>{{payment.payment_details}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+   
+    <!-- <div class="toggle_item">
+      <div class="accordion_head">
+        <ion-label>
+          <h4><b>3.</b> BarChef <span>30-Jun-2022 09:03 am</span></h4> 
+          <p>$ 25000</p>
+        </ion-label>
+      </div>
+      <div class="accordion_content" slot="content">
+        <div class="menu_content">
+          <ul>
+            <li><span>Payment Details :</span>Paid in cash</li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Total Amount -->
+    <div class="toggle_item">
+      <div class="accordion_head">
+        <ion-label>
+          <h4>Total Received Amount</h4> 
+          <p>$ {{totalAmount}}</p>
+        </ion-label>
+      </div>
+    </div>
+  </div>
+</ion-content>

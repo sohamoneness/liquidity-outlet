@@ -1,0 +1,74 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+.ion-color-zombie {
+	--ion-color-base: var(--ion-color-zombie);
+	--ion-color-base-rgb: var(--ion-color-zombie-rgb);
+	--ion-color-contrast: var(--ion-color-zombie-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-zombie-contrast-rgb);
+	--ion-color-shade: var(--ion-color-zombie-shade);
+	--ion-color-tint: var(--ion-color-zombie-tint);
+}
+
+body {
+    --ion-font-family: 'Lato', sans-serif;
+}
+.list_content_accordion ion-accordion.accordion-expanding > [slot=header] .ion-accordion-toggle-icon, 
+.list_content_accordion ion-accordion.accordion-expanded > [slot=header] .ion-accordion-toggle-icon,
+.list_content_accordion ion-accordion.accordion-animated > [slot=header] .ion-accordion-toggle-icon
+{
+	display: none;
+}
+ion-header {
+	ion-back-button {
+		color: #000000;
+	}
+}
+.border-top {
+	border-top: 1px solid #dfdfdf;
+    padding-top: 7px;
+    margin-top: 8px;
+}
+.icon_btn {
+	width: 48px;
+    height: 48px;
+    justify-content: center;
+
+	ion-icon {
+		font-size: 24px;
+		color: #000000;
+	}
+}
+
+ion-loading.custom-loading {
+	.loading-wrapper {
+	  background: transparent !important;
+	  box-shadow: none !important;
+	}
+  }

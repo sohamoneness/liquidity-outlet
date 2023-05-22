@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Stock Logs for {{products.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">
+    Current Stock
+    <span class="quantity">{{products.stock_count}}</span>
+  </h2>
+
+  <div class="toggle_group">
+    <div class="toggle_item" *ngFor="let stock of stockDetails">
+      <div class="accordion_head">
+        <ion-label>
+          <h4><span class="date">Date</span>{{stock.date}}</h4>
+          <h4><span class="date">Time</span>{{stock.time}}</h4>
+          <h4><span class="date">Count</span>{{stock.count}}</h4>
+        </ion-label>
+        <ion-buttons>
+          <button class="active" *ngIf="stock.type=='1'">Stock In</button>
+          <button class="inactive" *ngIf="stock.type=='2'">Stock Out</button>
+        </ion-buttons>
+      </div>
+      <div class="accordion_content">
+        <div class="menu_content">
+          <p>{{stock.comment}}</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="toggle_item">
+      <div class="accordion_head">
+        <ion-label>
+          <h4><span class="date">Date</span>2022-05-24</h4>
+          <h4><span class="date">Time</span>08:53:46</h4>
+          <h4><span class="date">Count</span>2</h4>
+        </ion-label>
+        <ion-buttons>
+          <button class="inactive">Stock Out</button>
+        </ion-buttons>
+      </div>
+      <div class="accordion_content">
+        <div class="menu_content">
+          <p>Stock deduct for order id - LIQ-186761</p>
+        </div>
+      </div>
+    </div>
+    <div class="toggle_item">
+      <div class="accordion_head">
+        <ion-label>
+          <h4><span class="date">Date</span>2022-05-24</h4>
+          <h4><span class="date">Time</span>08:56:51</h4>
+          <h4><span class="date">Count</span>2</h4>
+        </ion-label>
+        <ion-buttons>
+          <button class="inactive">Stock Out</button>
+        </ion-buttons>
+      </div>
+      <div class="accordion_content">
+        <div class="menu_content">
+          <p>Stock deduct for order id - LIQ-980441</p>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+</ion-content>

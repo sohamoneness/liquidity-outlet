@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Order Details</ion-title>   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="order_content">
+    <div class="menu_content">
+      <ul>
+        <li><span>Order Id :</span>#{{order.unique_id}}</li>
+        <li class="border-top">
+          <span>Shop Details :</span>
+          <p>
+            {{order.shop_name}}<br>
+            Email : {{order.shop_email}}<br>
+            Phone : {{order.shop_phone}}
+          </p>
+        </li>
+        <li>
+          <span>Customer Details :</span>
+          <p>
+            {{order.name}}<br>
+            Email :{{order.email}}<br>
+            Mobile : {{order.mobile}}
+          </p>
+        </li>
+        <!-- <li><span>Order Created At :</span>20-Feb-2021 09:49 pm</li> -->
+        <li><span>Order Created At :</span> {{order.created_at|date:'dd-MMM-yyy'}} {{order.created_at|date:'hh:mm a'}}</li>
+        <li><span>Order Date :</span> {{order.order_date}}</li>
+        <li><span>Order Time :</span> {{order.order_time}}</li>
+        <li><span>Billing Amount :</span>$  {{order.amount}}</li>
+        <li><span>GST (18%) :</span>$ {{order.tax_amount}}</li>
+        <li><span>Discount Amount :</span>$ {{order.deduct_amount}}</li>
+        <li><span>Total Amount :</span>$ {{order.total_amount}}</li>
+        <li><span>Transaction Id :</span>{{order.transaction_id}}</li>
+      </ul>
+    </div>
+  </div>
+  <h2 class="title">Items Of the Order</h2>
+  <div class="toggle_group">
+    <div class="toggle_item">
+      <div class="accordion_head" *ngFor="let product of productList">
+        <ion-label>
+          <h4>{{product.product_name}} (Qty. {{product.quantity}})</h4>
+          <h4><span class="date">Price</span>${{product.price}}</h4>
+        </ion-label>
+      </div>
+    </div>
+  </div>
+  <ion-buttons>
+    <ion-button class="reprt_btn" (click)="reportManager()">Report to manager</ion-button>
+    <ion-button class="inactive" (click)="continue()">Not Served</ion-button>
+  </ion-buttons>
+</ion-content>
+

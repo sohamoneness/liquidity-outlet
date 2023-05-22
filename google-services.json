@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "516790446498",
+    "project_id": "liquidity-canada",
+    "storage_bucket": "liquidity-canada.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516790446498:android:62985076d8a27170c32afb",
+        "android_client_info": {
+          "package_name": "com.ionic.liquidityoutlet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516790446498-mjknhr83lq7v8bmu80tgc3rrsq58m5l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlCxu8mCga2tsEHcIMKN8zkjJ-YyRsFJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516790446498-mjknhr83lq7v8bmu80tgc3rrsq58m5l5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

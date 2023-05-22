@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Menu Management</ion-title>
+    <ion-buttons slot="end" class="icon_btn" routerLink="/outlet-account">
+      <ion-icon name="person"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">Menu List <ion-button routerLink="/menu-add"><ion-icon name="add-circle-outline"></ion-icon>Add Menu</ion-button></h2>
+  <ion-accordion-group class="list_content_accordion">
+    <ion-accordion *ngFor="let menu of menuList">
+      <ion-item slot="header">
+        <ion-label>
+          <h4>{{menu.name}} <button [ngClass]="menu?.is_active=='1'?'active':'inactive'">active</button></h4> 
+          <ion-icon name="trash-outline" (click)="deleteMenu()"></ion-icon>
+          <ion-icon name="create-outline" (click)="edit('1')"></ion-icon>
+        </ion-label>
+      </ion-item>
+      <div class="accordion_content" slot="content">
+        <div class="menu_content">
+          <p>{{menu?.description}}</p>
+          <ul>
+            <li><span>Category :</span>Liquor (Premium Scotch)</li>
+            <li><span>Lock Price :</span>${{menu?.price|number:'.0-2'}}</li>
+            <li><span>Highest Price :</span>${{menu?.highest_price|number:'.0-2'}}</li>
+            <li><span>Minimum Price :</span>${{menu?.lowest_price|number:'.0-2'}}</li>
+            <li><span>Current Price :</span>${{menu?.current_price|number:'.0-2'}}</li>
+            <li><span>Current Stock :</span>{{menu?.stock_count}}</li>
+          </ul>
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+  
+</ion-content>

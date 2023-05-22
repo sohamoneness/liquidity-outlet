@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Bulk Stock Add</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">Product List</h2>
+
+  <!-- <ion-searchbar value="CHIVAS REGAL 12 YRS" placeholder="Search Product"></ion-searchbar> -->
+  <ion-searchbar value="" placeholder="Search Product" (ionChange)="search($event)"></ion-searchbar>
+
+  <div class="product_list_with_form">
+    <ion-item lines="none" *ngFor="let stock of stockList;let i=index">
+      <span class="sl_no">{{i+1}}.</span>
+      <h1>{{stock.name}} <span>Current Stock : <strong>{{stock.stock_count}}</strong></span></h1>
+      <ion-input type="tel" placeholder="0" pattern="^[1-9][0-9]{0,4}$" maxlength="5" [(ngModel)]="stockAdd[i].value"></ion-input>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="updateStock()">Update</ion-button>
+      <!-- <ion-button class="danger">clear</ion-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

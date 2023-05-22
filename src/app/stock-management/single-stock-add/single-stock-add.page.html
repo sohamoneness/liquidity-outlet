@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Stock Add</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">Stock List</h2>
+
+  <div class="product_list_with_form">
+    <ion-item lines="none">
+      <ion-label>Select Item</ion-label>
+      <ion-select interface="action-sheet" placeholder="Select Item" [(ngModel)]="productId">
+        <ion-select-option value={{stock.id}} *ngFor="let stock of stockList">{{stock.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>Stock Count</ion-label>
+      <ion-input type="number" placeholder="Stock Count" [(ngModel)]="count"></ion-input>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="updateStock()">Update</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,7 @@
+{
+  "name": "liqudity_outlet",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

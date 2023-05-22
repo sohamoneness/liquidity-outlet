@@ -1,0 +1,35 @@
+
+<ion-content padding>
+  <div class="flex_wrapper">
+    <div class="logo_wrap">
+      <img src="../../assets/logo.png">
+    </div>
+    <div class="form_wrap">
+      <form [formGroup]="loginForm">
+        <ion-input placeholder="Your Mobile Number" formControlName="mobile" type="tel" maxlength="10" [ngClass]="{ 'is-invalid':submitted && f['mobile'].errors}" ></ion-input>
+        <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+          <span *ngIf="f['mobile'].errors['required']">Mobile number is required.</span>
+          <span *ngIf="f['mobile'].errors['pattern']">Please enter valid mobile number.</span>
+        </div>
+  
+        <ion-input placeholder="Enter Your Password" [type]="passwordType" formControlName="password" [ngClass]="{ 'is-invalid' : submitted && f['password'].errors}"></ion-input>
+        <ion-button slot="end" fill="clear" (click)="showPassword()" class="seeClient">
+          <ion-icon *ngIf="showPsw==true" name="eye-outline" color="black" class="iconEye"></ion-icon>
+          <ion-icon *ngIf="showPsw==false" name="eye-off-outline" color="black" class="iconEye"></ion-icon>
+        </ion-button>
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">  
+          <span *ngIf="f['password'].errors['required']">Please enter your password.</span>  
+          <span  *ngIf="f['password'].errors['minlength']">Minimum password length is 6.</span>  
+        </div>
+  
+        <ng-container *ngIf="type=='manager';else waiterBlock" >
+          <ion-button class="btn-submit" expand="block" shape="round" routerDirection="forward" (click)="submitLogin('manager')">Log in as manager</ion-button>
+        </ng-container>
+        <ng-template #waiterBlock>
+          <ion-button class="btn-submit" expand="block" shape="round" routerDirection="forward" (click)="submitLogin('waiter')">Log in as waiter</ion-button>
+        </ng-template>
+      </form>
+      <p>Forgot your password?</p>
+    </div>
+  </div>
+</ion-content>

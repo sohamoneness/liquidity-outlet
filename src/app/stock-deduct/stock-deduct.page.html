@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Stock Deduct</ion-title>
+    <ion-buttons slot="end" class="icon_btn" routerLink="/outlet-account">
+      <ion-icon name="person"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">Stock List</h2>
+
+  <div class="product_list_with_form">
+    <ion-item lines="none">
+      <ion-label>Select Item</ion-label>
+      <ion-select interface="action-sheet" placeholder="Select Item">
+        <ion-select-option value="1">CHIVAS REGAL 12 YRS</ion-select-option>
+        <ion-select-option value="2">J. W. BLACK LABEL</ion-select-option>
+        <ion-select-option value="3">100 PIPERS 12 YRS</ion-select-option>
+        <ion-select-option value="3">TEACHERS HIGHLAND</ion-select-option>
+        <ion-select-option value="3">BLACK DOG CENTENERY</ion-select-option>
+        <ion-select-option value="3">VAT 69</ion-select-option>
+        <ion-select-option value="3">BLACK & WHITE</ion-select-option>
+        <ion-select-option value="3">BALLINTINES</ion-select-option>
+        <ion-select-option value="3">BOMBAY SAPPHIRE</ion-select-option>
+        <ion-select-option value="3">J. W. RED LABEL</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>Stock Count</ion-label>
+      <ion-input type="number" placeholder="Stock Count"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>Order Id</ion-label>
+      <ion-input type="Text" placeholder="Order Id"></ion-input>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button>Update</ion-button>
+      <ion-button class="danger">clear</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

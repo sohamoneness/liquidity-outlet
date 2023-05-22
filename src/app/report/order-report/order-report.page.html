@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Order Report</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">Search Data</h2>
+  <div class="product_list_with_form">
+    <ion-item lines="none">
+      <ion-label>Start Date</ion-label>
+      <ion-input type="date" [(ngModel)]="startDate" [max]="today" (ionChange)="startDateSelect()"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>End Date</ion-label>
+      <ion-input type="date" [(ngModel)]="endDate" [min]="minDate" [max]="today"></ion-input>
+    </ion-item>
+
+    <ion-buttons>
+      <ion-button (click)="getReport()">get report</ion-button>
+      <ion-button class="danger" (click)="clearData()">clear</ion-button>
+    </ion-buttons>
+  </div>
+
+  <h2 class="title">Order List</h2>
+  <ion-accordion-group class="list_content_accordion">
+    <ion-accordion *ngFor="let order of order_datas;let i=index">
+      <ion-item slot="header">
+        <ion-label>
+          <h4><b>{{i}}.</b>#{{order.unique_id}} <span>{{order.order_date}} {{order.order_time}}</span></h4> 
+          <p>$	{{order.total_amount}}</p>
+        </ion-label>
+      </ion-item>
+      <div class="accordion_content" slot="content">
+        <div class="menu_content">
+          <ul>
+            <li><span>Shop :</span>{{order.shop_name}}</li>
+            <li>
+              <span>Customer Details :</span>
+              <p>{{order.name}}<br>
+                Email : {{order.email}}<br>
+                Mobile : {{order.mobile}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ion-accordion>
+
+  
+
+    <!-- <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>
+          <h4><b>4.</b>#LIQ-289995 <span>15-Feb-2023 04:10 pm</span></h4> 
+          <p>$	97.68</p>
+        </ion-label>
+      </ion-item>
+      <div class="accordion_content" slot="content">
+        <div class="menu_content">
+          <ul>
+            <li><span>Shop :</span>BarChef</li>
+            <li>
+              <span>Customer Details :</span>
+              <p>GD Singh<br>
+                Email : gd@walson.in<br>
+                Mobile : 9830010604</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ion-accordion> -->
+
+
+    <!-- Total Value -->
+    <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>
+          <h4>Total Sales Value</h4> 
+          <p>$	{{total_order_value|number:'.0-2'}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-accordion>
+
+    <ion-accordion>
+      <ion-item slot="header">
+        <ion-label>
+          <h4>Total Orders</h4> 
+          <p>{{total_order_count}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-accordion>
+
+  </ion-accordion-group>
+
+</ion-content>

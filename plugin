@@ -1,0 +1,58 @@
+1. Camera :
+	ionic cordova plugin add cordova-plugin-camera
+	npm install @ionic-native/camera
+	
+	To solve camera plugin issue : 
+		npm install @ionic-native/core
+2. File transfer :
+	cordova plugin add https://github.com/apache/cordova-plugin-file-transfer.git
+	npm install @ionic-native/file-transfer
+
+3. Chart :	
+	npm install chart.js --save
+
+4. chart documents
+	https://sbsharma.com/chart-js-example-with-ionic-5/
+	https://javascript.plainenglish.io/ionic-5-charts-graphs-using-chartjs-library-5ce69b83b2a9
+
+
+5. Scnner : 
+	ionic cordova plugin add phonegap-plugin-barcodescanner
+	npm install @ionic-native/barcode-scanner
+		
+	To solve barcode issue	
+	in plugin/phonegapbarcode/src/android/.gradle plugin
+		dependencies {
+		    implementation(name:'barcodescanner-release-2.1.5', ext:'aar')
+		}
+
+6. Firebase push notification
+	X ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated
+	X ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated@7.5.0
+	cordova plugin remove cordova-plugin-fcm-with-dependecy-updated
+	cordova plugin add https://github.com/marutifh/cordova-plugin-fcm-with-dependecy-updated    --variable ANDROID_DEFAULT_NOTIFICATION_ICON="@mipmap/ic_launcher"   --variable ANDROID_FCM_VERSION="23.0.0"   --variable ANDROID_FIREBASE_BOM_VERSION="29.0.1"   --variable ANDROID_GOOGLE_SERVICES_VERSION="4.3.4"   --variable ANDROID_GRADLE_TOOLS_VERSION="4.1.0"   --variable IOS_FIREBASE_MESSAGING_VERSION="~> 7.4.0"
+	npm install @ionic-native/fcm
+	
+	${ANDROID_GOOGLE_SERVICES_VERSION}
+	
+	Imp Link : 
+		1. https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues/293
+		2. https://www.positronx.io/ionic-firebase-fcm-push-notification-tutorial-with-example/
+
+7. Firebase analytics
+	ionic cordova plugin add cordova-plugin-firebase-analytics --variable ANDROID_FIREBASE_BOM_VERSION="29.0.1"   --variable ANDROID_GOOGLE_SERVICES_VERSION="4.3.4"   --variable ANDROID_GRADLE_TOOLS_VERSION="4.1.0"
+	npm install @ionic-native/firebase-analytics
+
+
+How to solve issue after install 2 plugin
+	 <preference name="GradlePluginGoogleServicesEnabled" value="false" />
+
+8. Firebase crashlytics
+	cordova plugin add cordova-plugin-firebase-crashlytics --variable ANDROID_FIREBASE_CORE_VERSION=16.0.0 --save
+	npm i @ionic-native/firebase-crashlytics	 
+	 
+to show debug view in firebase console
+	adb shell setprop debug.firebase.analytics.app "com.ionic.liquidityoutlet"
+   	 
+
+

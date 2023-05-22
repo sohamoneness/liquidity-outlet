@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{type}} Menu</ion-title>
+    <!-- <ion-buttons slot="end" class="icon_btn" routerLink="/outlet-account">
+      <ion-icon name="person"></ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="menu_form">
+    <form [formGroup]="menuForm" >
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+        <div *ngIf="f['name'].errors['required']">Name is required.</div>
+        <div *ngIf="f['name'].errors['cannotContainSpace']">Please enter valid name.</div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-textarea placeholder="Description" formControlName="desc" [ngClass]="{'is-invalid' : submitted && f['desc'].errors}"></ion-textarea>
+      </ion-item>
+      <div *ngIf="submitted && f['desc'].errors" class="invalid-feedback">
+        <div *ngIf="f['desc'].errors['required']">Description is required</div>
+        <div *ngIf="f['desc'].errors['cannotContainSpace']">Please enter valid description.</div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-select justify="space-between" aria-label="category" placeholder="Select Category" (ionChange)="getSubCategory($any($event).target.value)" formControlName="category" [ngClass]="{'is-invalid' : submitted && f['category'].errors}">
+          <ion-select-option value="{{category.id}}" *ngFor="let category of categoryList">{{category.name}}</ion-select-option>
+         
+        </ion-select>
+      </ion-item>
+      <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">
+        <div *ngIf="f['category'].errors['required']">Category is required</div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-select justify="space-between" aria-label="subcategory" placeholder="Select Sub Category" formControlName="subcategory" [ngClass]="{'is-invalid' : submitted && f['subcategory'].errors}">
+          <ion-select-option value="{{subCat.id}}" *ngFor="let subCat of subcategoryList">{{subCat.name}}</ion-select-option>
+         
+        </ion-select>
+      </ion-item>
+      <div *ngIf="submitted && f['subcategory'].errors" class="invalid-feedback">
+        <div *ngIf="f['subcategory'].errors['required']">Sub Category is required</div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-input placeholder="Lock Price" formControlName="lockPrice" [ngClass]="{'is-invalid':submitted && f['lockPrice'].errors}"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['lockPrice'].errors" class="invalid-feedback">
+        <div *ngIf="f['lockPrice'].errors['required']"> Lock Price is required</div>
+        <div *ngIf="f['lockPrice'].errors['pattern']"> Please enter valid price.</div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-input placeholder="Highest Price" formControlName="highestPrice" [ngClass]="{'is-invalid':submitted && f['highestPrice'].errors}"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['highestPrice'].errors" class="invalid-feedback">
+        <div *ngIf="f['highestPrice'].errors['required']"> Highest Price is required</div>
+        <div *ngIf="f['highestPrice'].errors['pattern']"> Please enter valid price.</div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-input placeholder="Lowest Price" formControlName="lowPrice" [ngClass]="{'is-invalid':submitted && f['lowPrice'].errors}"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['lowPrice'].errors" class="invalid-feedback">
+        <div *ngIf="f['lowPrice'].errors['required']"> Lowest Price is required</div>
+        <div *ngIf="f['lowPrice'].errors['pattern']"> Please enter valid price.</div>
+      </div>
+
+      <ion-item lines="none">
+        <ion-input placeholder="Current Price" formControlName="currentPrice" [ngClass]="{'is-invalid':submitted && f['currentPrice'].errors}"></ion-input>
+      </ion-item>
+      <div *ngIf="submitted && f['currentPrice'].errors" class="invalid-feedback">
+        <div *ngIf="f['currentPrice'].errors['required']"> Current Price is required</div>
+        <div *ngIf="f['currentPrice'].errors['pattern']"> Please enter valid price.</div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button type="submit" (click)="menuFormSave()">Save</ion-button>
+      <ion-button class="danger" *ngIf="type=='Edit'" (click)="back()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
